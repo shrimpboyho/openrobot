@@ -1,7 +1,7 @@
-# jew are us
-# #swag
+# This is a test program to be parsed
 
-def narc(thingy,spam):
-	print jew
-	eat jew
-	smoke jew
+def move():
+  speed = 5
+  print speed
+
+move()

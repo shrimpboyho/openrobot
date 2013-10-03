@@ -1,7 +1,10 @@
 # This is a test program to be parsed
 
+speed = 4
+
 def move():
-  speed = 5
+  speed = speed + 1
   print speed
 
-move()
+def main():
+	move()

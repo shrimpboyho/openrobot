@@ -1,0 +1,7 @@
+import sys
+
+''' Constants '''
+
+ARGC = len(sys.argv)
+NEW_LINE = '\n'
+POUND = '#'
