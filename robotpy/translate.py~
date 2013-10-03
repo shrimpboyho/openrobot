@@ -61,5 +61,5 @@ def translate(FILENAME):
     # Print out the functions
     pp = pprint.PrettyPrinter(indent=4)
 
-    pp.pprint(functions, depth = 2)
+    pp.pprint(functions)
 

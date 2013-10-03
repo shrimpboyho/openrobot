@@ -50,7 +50,7 @@ def translate(FILENAME):
 	    if q < maxlines:    
 		leading = countLeadingSpaces(lines[q])
 	        while countLeadingSpaces(lines[q]) == leading:
-		    funcbody.append(lines[q].lstrip())
+		    funcbody.append(lines[q])
 		    q = q + 1
 		    if q == maxlines:
 			break

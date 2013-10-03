@@ -7,4 +7,4 @@ def move():
   print speed
 
 def main():
-	move()
+  move()
