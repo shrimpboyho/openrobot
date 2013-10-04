@@ -56,9 +56,9 @@ def translate(FILENAME):
 	    if i < maxlines:    
 		leading = countLeadingSpaces(lines[i])
 	        while countLeadingSpaces(lines[i]) == leading:
-		    maxlines = len(lines)
 		    funcbody.append(lines[i])
 		    del lines[i]
+		    maxlines = len(lines)
 		    if i == maxlines:
 			break
 
@@ -69,7 +69,7 @@ def translate(FILENAME):
 	
         globalpack.append(line)
 
-    functions.append(globalcon)
+    functions.insert(0,globalcon)
 
     # Print out the functions
     
@@ -90,9 +90,21 @@ def translate(FILENAME):
 	
 	for line in lines:
 	    print "Current Line: " + line
-	    # See if there are any int declarations
-	    if re.match('.+=\s+\d*', line):
-	        print "Found an integer declaration"
+	    
+	    # See if there are any int declarations or assignments
+	    if re.match('[^=]+={1}[^=]+', line):
+		variable = line.split('=')[0].strip()
+		assignment = line.split('=')[1].strip()
+		if variable not in mem_vars_name:
+		    print "Found declaration of: " + variable
+		    print "Assigned to: " + assignment
+		    mem_vars_name.append(variable)
+		    
+		    # Determine variable type through analysis
+		    
+		    mem_vars_type.append('INT')
+	        
+
 
 
 
