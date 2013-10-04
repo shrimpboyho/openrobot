@@ -31,6 +31,8 @@ def translate(FILENAME):
 	    lines_without_comments.append(line)
 
     # Split code into functions
+    
+    print "==============EXTRACTING FUNCTIONS=============="
 
     lines = lines_without_comments
     maxlines = len(lines)
@@ -59,7 +61,28 @@ def translate(FILENAME):
 	    functions.append(funcpack)
 
     # Print out the functions
+    
+    print "==============PRINTING FUNCTION STRUCTURE=============="
     pp = pprint.PrettyPrinter(indent=4)
-
     pp.pprint(functions)
+
+    # Determine the variable types
+    
+    print "==============FINDING VARIABLES=============="
+
+    mem_vars_name = []
+    mem_vars_type = []
+
+    for funcpack in functions:
+	dec = funcpack[0]
+	lines = funcpack[1]
+	
+	for line in lines:
+	    print "Current Line: " + line
+	    # See if there are any int declarations
+	    if re.match('.+=\s+\d*', line):
+	        print "Found an integer declaration"
+
+
+
 

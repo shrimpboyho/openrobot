@@ -50,7 +50,7 @@ def translate(FILENAME):
 	    if q < maxlines:    
 		leading = countLeadingSpaces(lines[q])
 	        while countLeadingSpaces(lines[q]) == leading:
-		    funcbody.append(lines[q].lstrip())
+		    funcbody.append(lines[q])
 		    q = q + 1
 		    if q == maxlines:
 			break
@@ -59,7 +59,25 @@ def translate(FILENAME):
 	    functions.append(funcpack)
 
     # Print out the functions
-    pp = pprint.PrettyPrinter(indent=4)
 
+    pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(functions)
+
+    # Determine the variable types
+
+    mem_vars_name = []
+    mem_vars_type = []
+
+    for funcpack in functions:
+	dec = funcpack[0]
+	lines = funcpack[1]
+	
+	for line in lines:
+	    print "Current Line: " + line
+	    # See if there are any int declarations
+	    if re.match('.+=\s+\d*', line):
+	        print "Found an integer declaration"
+
+
+
 
