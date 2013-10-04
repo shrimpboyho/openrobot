@@ -35,10 +35,14 @@ def translate(FILENAME):
     print "==============EXTRACTING FUNCTIONS=============="
 
     lines = lines_without_comments
-    maxlines = len(lines)
+
+    globalarr = []
+    globalcon = ['GLOBAL',[]]
+    globalpack = globalcon[1]
 
     for i, line in enumerate(lines):
 	print "Current Line: " + line
+	maxlines = len(lines)
 	if re.match('\s*def\s+.+\(.*\):\s*',line):
 	    print "Found function body declaration"
 	    funcpack = []
@@ -47,18 +51,25 @@ def translate(FILENAME):
 
 	    # Pack the function's body code
 
-	    q = i + 1
+	    i = i + 1
 	    
-	    if q < maxlines:    
-		leading = countLeadingSpaces(lines[q])
-	        while countLeadingSpaces(lines[q]) == leading:
-		    funcbody.append(lines[q])
-		    q = q + 1
-		    if q == maxlines:
+	    if i < maxlines:    
+		leading = countLeadingSpaces(lines[i])
+	        while countLeadingSpaces(lines[i]) == leading:
+		    funcbody.append(lines[i])
+		    del lines[i]
+		    maxlines = len(lines)
+		    if i == maxlines:
 			break
+
 
 	    funcpack.append(funcbody)
 	    functions.append(funcpack)
+	    continue
+	
+        globalpack.append(line)
+
+    functions.append(globalcon)
 
     # Print out the functions
     
