@@ -1,4 +1,4 @@
-[openrobot]() - A Simple Language For NXT Programming
+[openrobot]() - A Simple Compile-To-C Language For NXT Programming
 =========
 [![Build Status](https://drone.io/github.com/shrimpboyho/openrobot/status.png)](https://drone.io/github.com/shrimpboyho/openrobot/latest)
 
