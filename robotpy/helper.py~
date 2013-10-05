@@ -6,5 +6,5 @@ def countLeadingSpaces(a):
     return len(a) - len(a.lstrip())
 
 def printAsJSON(thing):
-    print json.dumps(thing, indent=2, separators=(',', ': '))
+    print json.dumps(thing, indent=4, separators=(',', ': '))
     

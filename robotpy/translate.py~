@@ -74,8 +74,7 @@ def translate(FILENAME):
     # Print out the functions
     
     print "==============PRINTING FUNCTION STRUCTURE=============="
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(functions)
+    printAsJSON(functions)
 
     # Determine the variable types
     
@@ -100,7 +99,7 @@ def translate(FILENAME):
 		    print "Assigned to: " + assignment
 		    mem_vars_name.append(variable)
 		    
-		    # Determine variable type through analysis
+		    # TODO: Determine variable type through analysis
 		    
 		    mem_vars_type.append('INT')
 	        

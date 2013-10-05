@@ -1,7 +1,6 @@
 import re
 from constants import *
 from helper import *
-import pprint
 
 ''' Translate function '''
 
@@ -74,8 +73,7 @@ def translate(FILENAME):
     # Print out the functions
     
     print "==============PRINTING FUNCTION STRUCTURE=============="
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(functions)
+    printAsJSON(functions)
 
     # Determine the variable types
     
