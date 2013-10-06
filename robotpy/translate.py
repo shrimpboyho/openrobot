@@ -109,21 +109,14 @@ def translate(FILENAME):
 		    
 		    # Determine variable type through analysis
 		    
-		    if re.match('^\d+$',assignment): # constant int assign
-			mem_vars_type.append('INT')
-	            if re.match('^\d+\.\d+$',assignment): # constant float assign
-			mem_vars_type.append('FLOAT')
-		    if re.match('^\".*\"$',assignment): # constant string assign
-			mem_vars_type.append('STRING')
-		    if re.match('^true$',assignment): # constant bool assign
-			mem_vars_type.append('BOOL')
+		    if constantTypeAssignment(assignment):
+		        mem_vars_type.append(constantTypeAssignment(assignment))
 
-		    # Determine more complex assignments with operators
+		    # Determine more complex assignments with operators TODO: MAKE THIS ALGORYTHM SMARTER
 
-		    if containsOperation(assignment):
+	            else:
 			tokens = re.split('\+|\-|\*|\/|\*\*|%',assignment)
-                        # TODO: Find a way to determine stuff
-			mem_vars_type.append('WHACK')
+			mem_vars_type.append(constantTypeAssignment(tokens[0].strip()))
 			print "Here are the tokens of the assignment expression: " + str(tokens)
 
         # Pack in the local scope into the function tree
