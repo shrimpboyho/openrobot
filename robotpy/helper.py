@@ -17,10 +17,10 @@ def containsOperation(assignment):
 
 def constantTypeAssignment(assignment):
     if re.match('^\d+$',assignment): # constant int assign
-        return 'INT'
+        return 'int'
     if re.match('^\d+\.\d+$',assignment): # constant float assign
-	return 'FLOAT'
+	return 'float'
     if re.match('^\".*\"$',assignment): # constant string assign
-	return 'STRING'
-    if re.match('^true$',assignment): # constant bool assign
-	return 'BOOL'
+	return 'string'
+    if re.match('^true|false$',assignment): # constant bool assign
+	return 'bool'

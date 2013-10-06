@@ -135,14 +135,35 @@ def translate(FILENAME):
     print "==============PRINTING FUNCTION STRUCTURE=============="
     printAsJSON(functions)
 
+
+    # TODO: Determine function return types
+
     # Convert the intermediate representation to C
 
     # Create a copy
 
     dump = functions
 
-    #f = open("output.c", "w")
+    f = open("output.c", "w")
 
     # Write down all function prototypes
+
+    f.write('/* Function prototypes */\n')
  
+    for i, function in enumerate(dump):
+	if i != 0:
+	    f.write(function[0] + '\n')
     
+    # Write down all entire GLOBAL function
+
+    globalfunc = dump[0]
+    globalfunclines = globalfunc[1]
+    globalfunctypes = globalfunc[2][2]
+    globalfuncdeclines = globalfunc[2][3]
+    
+    f.write('\n/* Global scope */\n')
+
+    for lineNumber, line in enumerate(globalfunclines):
+	if lineNumber in globalfuncdeclines:
+            index = globalfuncdeclines.index(lineNumber)
+            f.write(globalfunctypes[index] + ' ' + line + '\n')
