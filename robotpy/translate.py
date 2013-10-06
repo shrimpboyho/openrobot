@@ -118,6 +118,10 @@ def translate(FILENAME):
 		    if re.match('^true$',assignment): # constant bool assign
 			mem_vars_type.append('BOOL')
 
+		    # Determine more complex assignments with operators
+
+		    
+
         # Pack in the local scope into the function tree
 
 	functions[i].append(["SCOPE",mem_vars_name,mem_vars_type])
