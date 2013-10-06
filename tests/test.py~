@@ -3,7 +3,7 @@
 # Integer declaration
 speed = 4
 motor = 69.5
-text = "hey guys!"
+text = "hey +  guys!"
 junk =   5    +4
 
 # Move function

@@ -76,6 +76,7 @@ def translate(FILENAME):
 
     mem_vars_name = []
     mem_vars_type = []
+    mem_vars_dec = []
 
     for i, funcpack in enumerate(functions):
 	dec = funcpack[0]
@@ -86,16 +87,18 @@ def translate(FILENAME):
 	global_scope_inherit = []
 	if i != 0:
 	    global_scope_inherit = functions[0][2][1]
+	    global_scope_inherit_dec = functions[0][2][3]
 	
 	# Shove global scope into local scope
 
-	for thing in global_scope_inherit:
+	for k, thing in enumerate(global_scope_inherit):
 	    mem_vars_name.append(thing)
 	    mem_vars_type.append('GLOBAL')
+	    mem_vars_dec.append(global_scope_inherit_dec[k])
 
 	# Loop through line by line finding variables
 
-	for line in lines:
+	for lineNumber, line in enumerate(lines):
 	    print "Current Line: " + line
 	    
 	    # See if there are any int declarations or assignments
@@ -106,7 +109,7 @@ def translate(FILENAME):
 		    print "Found declaration of: " + variable
 		    print "Assigned to: " + assignment
 		    mem_vars_name.append(variable)
-		    
+		    mem_vars_dec.append(lineNumber)
 		    # Determine variable type through analysis
 		    
 		    if constantTypeAssignment(assignment):
@@ -121,9 +124,10 @@ def translate(FILENAME):
 
         # Pack in the local scope into the function tree
 
-	functions[i].append(["SCOPE",mem_vars_name,mem_vars_type])
+	functions[i].append(["SCOPE",mem_vars_name,mem_vars_type,mem_vars_dec])
 	mem_vars_name = []
 	mem_vars_type = []
+	mem_vars_dec = []
 
 
     # Print out the functions

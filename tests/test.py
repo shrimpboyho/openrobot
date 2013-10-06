@@ -13,6 +13,7 @@ def move():
 
 # Main function (program entry)
 def main():
+  localvar = 43.2
   move()
   if true:
-    print 5
+    print localvar
