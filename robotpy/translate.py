@@ -54,7 +54,7 @@ def translate(FILENAME):
 	    
 	    if i < maxlines:    
 		leading = countLeadingSpaces(lines[i])
-	        while countLeadingSpaces(lines[i]) == leading:
+	        while countLeadingSpaces(lines[i]) >= leading:
 		    funcbody.append(lines[i])
 		    del lines[i]
 		    maxlines = len(lines)
@@ -70,11 +70,6 @@ def translate(FILENAME):
 
     functions.insert(0,globalcon)
 
-    # Print out the functions
-    
-    print "==============PRINTING FUNCTION STRUCTURE=============="
-    printAsJSON(functions)
-
     # Determine the variable types
     
     print "==============FINDING VARIABLES=============="
@@ -82,15 +77,29 @@ def translate(FILENAME):
     mem_vars_name = []
     mem_vars_type = []
 
-    for funcpack in functions:
+    for i, funcpack in enumerate(functions):
 	dec = funcpack[0]
 	lines = funcpack[1]
 	
+	# Inherit the global scope
+	
+	global_scope_inherit = []
+	if i != 0:
+	    global_scope_inherit = functions[0][2][1]
+	
+	# Shove global scope into local scope
+
+	for thing in global_scope_inherit:
+	    mem_vars_name.append(thing)
+	    mem_vars_type.append('GLOBAL')
+
+	# Loop through line by line finding variables
+
 	for line in lines:
 	    print "Current Line: " + line
 	    
 	    # See if there are any int declarations or assignments
-	    if re.match('[^=]+={1}[^=]+', line):
+	    if re.match('^[^=]+={1}[^=]+$', line):
 		variable = line.split('=')[0].strip()
 		assignment = line.split('=')[1].strip()
 		if variable not in mem_vars_name:
@@ -98,12 +107,25 @@ def translate(FILENAME):
 		    print "Assigned to: " + assignment
 		    mem_vars_name.append(variable)
 		    
-		    # TODO: Determine variable type through analysis
+		    # Determine variable type through analysis
 		    
-		    mem_vars_type.append('INT')
-	        
+		    if re.match('^\d+$',assignment): # constant int assign
+			mem_vars_type.append('INT')
+	            if re.match('^\d+\.\d+$',assignment): # constant float assign
+			mem_vars_type.append('FLOAT')
+		    if re.match('^\".*\"$',assignment): # constant string assign
+			mem_vars_type.append('STRING')
+		    if re.match('^true$',assignment): # constant bool assign
+			mem_vars_type.append('BOOL')
+
+        # Pack in the local scope into the function tree
+
+	functions[i].append(["SCOPE",mem_vars_name,mem_vars_type])
+	mem_vars_name = []
+	mem_vars_type = []
 
 
-
-
-
+    # Print out the functions
+    
+    print "==============PRINTING FUNCTION STRUCTURE=============="
+    printAsJSON(functions)
