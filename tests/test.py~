@@ -2,7 +2,9 @@
 
 # Integer declaration
 speed = 4
+motor = 69.5
 text = "hey guys!"
+junk =   5+4
 
 # Move function
 def move():
@@ -14,5 +16,3 @@ def main():
   move()
   if true:
     print 5
-
-motor = 69

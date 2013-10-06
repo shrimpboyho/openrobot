@@ -120,10 +120,11 @@ def translate(FILENAME):
 
 		    # Determine more complex assignments with operators
 
-		    if '+' in assignment or '-' in assignment or '*' in assignment or '/' in assignment or '%' in assignment or '**' in assignment:
-			    return True
-		    else:
-			    return False
+		    if containsOperation(assignment):
+			tokens = re.split('\+|\-|\*|\/|\*\*|%',assignment)
+                        # TODO: Find a way to determine stuff
+			mem_vars_type.append('WHACK')
+			print str(tokens)
 
         # Pack in the local scope into the function tree
 

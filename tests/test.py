@@ -4,6 +4,7 @@
 speed = 4
 motor = 69.5
 text = "hey guys!"
+junk =   5    +4
 
 # Move function
 def move():
