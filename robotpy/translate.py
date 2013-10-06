@@ -134,3 +134,15 @@ def translate(FILENAME):
     
     print "==============PRINTING FUNCTION STRUCTURE=============="
     printAsJSON(functions)
+
+    # Convert the intermediate representation to C
+
+    # Create a copy
+
+    dump = functions
+
+    #f = open("output.c", "w")
+
+    # Write down all function prototypes
+ 
+    
