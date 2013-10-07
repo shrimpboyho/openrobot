@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>OpenRobot by shrimpboyho</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>OpenRobot</h1>
+        <p>NXT Programming Made Simple</p>
+
+        <p class="view"><a href="https://github.com/shrimpboyho/openrobot">View the Project on GitHub <small>shrimpboyho/openrobot</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/shrimpboyho/openrobot/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/shrimpboyho/openrobot/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/shrimpboyho/openrobot">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="openrobot---a-simple-compile-to-c-language-for-nxt-programming" class="anchor" href="#openrobot---a-simple-compile-to-c-language-for-nxt-programming"><span class="octicon octicon-link"></span></a><a href="">openrobot</a> - A Simple Compile-To-C Language For NXT Programming</h1>
+
+<p><a href="https://drone.io/github.com/shrimpboyho/openrobot/latest"><img src="https://drone.io/github.com/shrimpboyho/openrobot/status.png" alt="Build Status"></a></p>
+
+<p><code>openrobot</code> is a simple platform for programming NXT robots built atop of <code>NeXT Btye Codes</code> (NBC). At it's core, <code>openrobot</code> takes simple source code as input and generates C output. This C output is then fed into the <code>nbc</code> compiler where NXT instructions can be generated.</p>
+
+<h2>
+<a name="the-language" class="anchor" href="#the-language"><span class="octicon octicon-link"></span></a>The Language</h2>
+
+<p><code>openrobot</code> has a language of its own that is heavily based off Python. Here is some sample source code:</p>
+
+<div class="highlight highlight-python"><pre><span class="c"># This is a test program to be parsed</span>
+
+<span class="n">speed</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="k">def</span> <span class="nf">move</span><span class="p">():</span>
+  <span class="n">speed</span> <span class="o">=</span> <span class="n">speed</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="k">print</span> <span class="n">speed</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+  <span class="n">move</span><span class="p">()</span>
+</pre></div>
+
+<h2>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How To Use</h2>
+
+<p>Setting up <code>openrobot</code> is quite easy. Make sure you have <code>Python 2.7</code>.</p>
+
+<div class="highlight highlight-bash"><pre>git clone https://github.com/shrimpboyho/openrobot.git
+<span class="nb">cd </span>openrobot
+</pre></div>
+
+<p>From here you can run the tests.</p>
+
+<div class="highlight highlight-bash"><pre>python robotpy tests/test.py
+</pre></div>
+
+<h2>
+<a name="why" class="anchor" href="#why"><span class="octicon octicon-link"></span></a>Why?</h2>
+
+<p><code>openrobot</code> was created with education in mind. By exposing students and hobbyists to a simple programming language, the transition from GUI based programming to text based programming can be easily done. <code>openrobot</code> avoids archaic syntax and represents logic in a manner heavily based off of <code>python</code>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/shrimpboyho">shrimpboyho</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
