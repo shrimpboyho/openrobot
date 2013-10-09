@@ -46,6 +46,7 @@ def translate(FILENAME):
 	    print "Found function body declaration"
 	    funcpack = []
 	    funcpack.append(line)
+	    funcpack.append("") # Append blank string for converted prototype code
 	    funcbody = []
 
 	    # Pack the function's body code
@@ -80,7 +81,10 @@ def translate(FILENAME):
 
     for i, funcpack in enumerate(functions):
 	dec = funcpack[0]
-	lines = funcpack[1]
+	if i == 0:
+	    lines = funcpack[1]
+	if i != 0:
+	    lines = funcpack[2]
 	
 	# Inherit the global scope
 	
@@ -129,14 +133,25 @@ def translate(FILENAME):
 	mem_vars_type = []
 	mem_vars_dec = []
 
+    # Determine function return types
+
+    for i, funcpack in enumerate(functions):
+	dec = funcpack[0]
+	if i == 0:
+	    continue
+	lines = funcpack[2]
+	for line in lines:
+	    if re.match('^return\s{1}.+$', line.strip()):
+	        returnvar = line.strip().split('return ')[1]
+		if constantTypeAssignment(returnvar):
+		    functions[i][1] += constantTypeAssignment(returnvar)
+		    break
 
     # Print out the functions
     
     print "==============PRINTING FUNCTION STRUCTURE=============="
     printAsJSON(functions)
 
-
-    # TODO: Determine function return types
 
     # Convert the intermediate representation to C
 
@@ -161,7 +176,7 @@ def translate(FILENAME):
     globalfunctypes = globalfunc[2][2]
     globalfuncdeclines = globalfunc[2][3]
     
-    f.write('/* Global scope */\n')
+    f.write('\n/* Global scope */\n')
 
     for lineNumber, line in enumerate(globalfunclines):
 	if lineNumber in globalfuncdeclines:

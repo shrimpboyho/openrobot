@@ -1,6 +1,7 @@
 /* Function prototypes */
 def move():
 def main():
+def junk(crap):
 
 /* Global scope */
 int speed = 4

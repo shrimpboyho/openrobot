@@ -17,3 +17,7 @@ def main():
   move()
   if true:
     print localvar
+  return 0
+
+def junk(crap):
+  return "stringy!"
