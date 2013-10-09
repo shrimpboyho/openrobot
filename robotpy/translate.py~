@@ -136,9 +136,11 @@ def translate(FILENAME):
     # Determine function return types
 
     for i, funcpack in enumerate(functions):
-	dec = funcpack[0]
 	if i == 0:
 	    continue
+	dec = funcpack[0]
+	variablenamebank = funcpack[3][1]
+	variabletypebank = funcpack[3][2]
 	lines = funcpack[2]
 	for line in lines:
 	    if re.match('^return\s{1}.+$', line.strip()):
@@ -146,6 +148,10 @@ def translate(FILENAME):
 		if constantTypeAssignment(returnvar):
 		    functions[i][1] += constantTypeAssignment(returnvar)
 		    break
+	        else:
+		    index = variablenamebank.index(returnvar)
+		    functions[i][1] += variabletypebank[index]
+
 
     # Print out the functions
     

@@ -10,6 +10,8 @@ junk =   5    +4
 def move():
   speed = speed + 1
   print speed
+  falsy = 4 + 4.3
+  return falsy
 
 # Main function (program entry)
 def main():
