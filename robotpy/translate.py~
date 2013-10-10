@@ -139,19 +139,34 @@ def translate(FILENAME):
 	if i == 0:
 	    continue
 	dec = funcpack[0]
+	if re.match('^\s*def\s*main\s*\(\s*\)\s*:\s*$',dec.strip()):
+	    functions[i][1] += 'task'
+	    continue
 	variablenamebank = funcpack[3][1]
 	variabletypebank = funcpack[3][2]
 	lines = funcpack[2]
-	for line in lines:
+	for k, line in enumerate(lines):
 	    if re.match('^return\s{1}.+$', line.strip()):
 	        returnvar = line.strip().split('return ')[1]
 		if constantTypeAssignment(returnvar):
 		    functions[i][1] += constantTypeAssignment(returnvar)
 		    break
 	        else:
-		    index = variablenamebank.index(returnvar)
+		    index = variablenamebank.index(returnvar.split(' ')[0])
 		    functions[i][1] += variabletypebank[index]
+	if k == enumerate(lines):
+	        functions[i][1] += 'void '
 
+    
+    # Set up the C function prototypes
+    
+    for i, funcpack in enumerate(functions):
+	if i == 0:
+	    continue
+	functions[i][1] += ' ' + funcpack[0].split('def ')[1]
+	functions[i][1] = functions[i][1].replace(':','')
+	print dec
+	
 
     # Print out the functions
     
@@ -173,7 +188,7 @@ def translate(FILENAME):
  
     for i, function in enumerate(dump):
 	if i != 0:
-	    f.write(function[0] + '\n')
+	    f.write(function[1] + ';\n')
     
     # Write down all entire GLOBAL function
 
@@ -187,4 +202,4 @@ def translate(FILENAME):
     for lineNumber, line in enumerate(globalfunclines):
 	if lineNumber in globalfuncdeclines:
             index = globalfuncdeclines.index(lineNumber)
-            f.write(globalfunctypes[index] + ' ' + line + '\n')
+            f.write(globalfunctypes[index] + ' ' + line + ';\n')
