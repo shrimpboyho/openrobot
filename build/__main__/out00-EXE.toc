@@ -1,0 +1,9 @@
+('/host/Documents and Settings/Norbert Joseph/Desktop/openrobot/build/__main__/__main__',
+ True,
+ False,
+ None,
+ None,
+ [],
+ None,
+ False,
+ 1381455980)
