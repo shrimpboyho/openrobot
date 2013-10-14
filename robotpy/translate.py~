@@ -187,7 +187,7 @@ def translate(FILENAME):
     f.write('/* Function prototypes */\n')
  
     for i, function in enumerate(dump):
-	if i != 0:
+	if i != 0 and not re.match('^\s*def\s*main\s*\(\s*\)\s*:\s*$',function[0].strip()):
 	    f.write(function[1] + ';\n')
     
     # Write down all entire GLOBAL function
@@ -203,3 +203,23 @@ def translate(FILENAME):
 	if lineNumber in globalfuncdeclines:
             index = globalfuncdeclines.index(lineNumber)
             f.write(globalfunctypes[index] + ' ' + line + ';\n')
+
+    # Write down subsequent functions
+
+    for i, function in enumerate(dump):
+	if i == 0:
+	    continue
+        
+        # Write down function declaration and opening paren
+    
+        f.write('\n')
+	f.write('/*' + function[0] + '*/\n')
+	f.write(function[1] + '\n')
+	f.write('{\n\n')
+
+	for lineNum, line in enumerate(function[2]):
+	   f.write(line + ';\n')
+
+        # Write down closing paren 
+
+        f.write('\n}\n')

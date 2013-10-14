@@ -203,3 +203,25 @@ def translate(FILENAME):
 	if lineNumber in globalfuncdeclines:
             index = globalfuncdeclines.index(lineNumber)
             f.write(globalfunctypes[index] + ' ' + line + ';\n')
+
+    # Write down subsequent functions
+
+    for i, function in enumerate(dump):
+	if i == 0:
+	    continue
+        
+        # Write down function declaration and opening paren
+    
+        f.write('\n')
+	f.write('/*' + function[0] + '*/\n')
+	f.write(function[1] + '\n')
+	f.write('{\n\n')
+
+	# TODO: CHECK FOR CONTROL FLOW STRUCTURES
+
+	for lineNum, line in enumerate(function[2]):
+	   f.write(line + ';\n')
+
+        # Write down closing paren 
+
+        f.write('\n}\n')
