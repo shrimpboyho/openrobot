@@ -1,11 +1,14 @@
+'''
+This module consists of the main functions that handle code translation from the front-end (openrobot) to an internal representation.
+'''
+
 import re
 from constants import *
 from helper import *
 
-''' Translate function '''
-
 def translate(FILENAME):
-    
+    ''' Translate function '''
+
     # Standard storage containers
 
     functions = []

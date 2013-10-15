@@ -22,5 +22,5 @@ def constantTypeAssignment(assignment):
 	return 'float'
     if re.match('^\".*\"$',assignment): # constant string assign
 	return 'string'
-    if re.match('^true$',assignment): # constant bool assign
+    if re.match('^true|false$',assignment): # constant bool assign
 	return 'bool'

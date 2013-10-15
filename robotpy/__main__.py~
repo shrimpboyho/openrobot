@@ -1,13 +1,18 @@
+"""
+The entry point for the entire program     
+"""
+
 import sys
 import pprint
 from translate import *
 from helper import *
 from constants import *
 
-''' Code for running the command line stuff '''
+## Command line agrument checks take place here.
+#
 
 if ARGC > 1:
     FILENAME = sys.argv[1]
-    translate()
+    translate(FILENAME)
 else:
     pass
