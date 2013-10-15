@@ -14,8 +14,8 @@ def printAsJSON(thing):
     print json.dumps(thing, indent=2, separators=(',', ': '))
 
 def containsOperation(assignment):
-	''' Checks to see if an assignment contains an expression (expression operators) ''' 
-	if '+' in assignment or '-' in assignment or '*' in assignment or '/' in assignment or '%' in assignment or '**' in assignment:
+    ''' Checks to see if an assignment contains an expression (expression operators) ''' 
+    if '+' in assignment or '-' in assignment or '*' in assignment or '/' in assignment or '%' in assignment or '**' in assignment:
         return True
     else:
 	return False
