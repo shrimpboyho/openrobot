@@ -1,4 +1,5 @@
 #pragma once
+#include "windows.h"
 
 namespace visualIDE {
 
@@ -93,7 +94,7 @@ namespace visualIDE {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
-			System::Windows::Forms::TreeNode^  treeNode2 = (gcnew System::Windows::Forms::TreeNode(L"Project"));
+			System::Windows::Forms::TreeNode^  treeNode1 = (gcnew System::Windows::Forms::TreeNode(L"Project"));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->newToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -121,11 +122,11 @@ namespace visualIDE {
 			this->toolStripSplitButton1 = (gcnew System::Windows::Forms::ToolStripSplitButton());
 			this->toolStripButton3 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
-			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
+			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->treeView1 = (gcnew System::Windows::Forms::TreeView());
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
-			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			this->menuStrip1->SuspendLayout();
 			this->statusStrip1->SuspendLayout();
 			this->toolStrip1->SuspendLayout();
@@ -322,6 +323,7 @@ namespace visualIDE {
 			this->toolStripButton3->Name = L"toolStripButton3";
 			this->toolStripButton3->Size = System::Drawing::Size(23, 22);
 			this->toolStripButton3->Text = L"toolStripButton3";
+			this->toolStripButton3->Click += gcnew System::EventHandler(this, &Form1::toolStripButton3_Click);
 			// 
 			// tabControl1
 			// 
@@ -336,16 +338,6 @@ namespace visualIDE {
 			this->tabControl1->Size = System::Drawing::Size(400, 353);
 			this->tabControl1->TabIndex = 0;
 			// 
-			// tabPage2
-			// 
-			this->tabPage2->Location = System::Drawing::Point(4, 22);
-			this->tabPage2->Name = L"tabPage2";
-			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(392, 327);
-			this->tabPage2->TabIndex = 1;
-			this->tabPage2->Text = L"tabPage2";
-			this->tabPage2->UseVisualStyleBackColor = true;
-			// 
 			// tabPage1
 			// 
 			this->tabPage1->Controls->Add(this->richTextBox1);
@@ -357,6 +349,30 @@ namespace visualIDE {
 			this->tabPage1->Text = L"tabPage1";
 			this->tabPage1->UseVisualStyleBackColor = true;
 			// 
+			// richTextBox1
+			// 
+			this->richTextBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->richTextBox1->Font = (gcnew System::Drawing::Font(L"Courier New", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->richTextBox1->Location = System::Drawing::Point(0, 0);
+			this->richTextBox1->Name = L"richTextBox1";
+			this->richTextBox1->ScrollBars = System::Windows::Forms::RichTextBoxScrollBars::ForcedVertical;
+			this->richTextBox1->Size = System::Drawing::Size(396, 328);
+			this->richTextBox1->TabIndex = 0;
+			this->richTextBox1->Text = L"";
+			// 
+			// tabPage2
+			// 
+			this->tabPage2->Location = System::Drawing::Point(4, 22);
+			this->tabPage2->Name = L"tabPage2";
+			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage2->Size = System::Drawing::Size(392, 327);
+			this->tabPage2->TabIndex = 1;
+			this->tabPage2->Text = L"tabPage2";
+			this->tabPage2->UseVisualStyleBackColor = true;
+			// 
 			// treeView1
 			// 
 			this->treeView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
@@ -364,9 +380,9 @@ namespace visualIDE {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->treeView1->Location = System::Drawing::Point(3, 2);
 			this->treeView1->Name = L"treeView1";
-			treeNode2->Name = L"Node0";
-			treeNode2->Text = L"Project";
-			this->treeView1->Nodes->AddRange(gcnew cli::array< System::Windows::Forms::TreeNode^  >(1) {treeNode2});
+			treeNode1->Name = L"Node0";
+			treeNode1->Text = L"Project";
+			this->treeView1->Nodes->AddRange(gcnew cli::array< System::Windows::Forms::TreeNode^  >(1) {treeNode1});
 			this->treeView1->Size = System::Drawing::Size(208, 354);
 			this->treeView1->TabIndex = 6;
 			// 
@@ -386,20 +402,6 @@ namespace visualIDE {
 			this->splitContainer1->Size = System::Drawing::Size(610, 356);
 			this->splitContainer1->SplitterDistance = 203;
 			this->splitContainer1->TabIndex = 5;
-			// 
-			// richTextBox1
-			// 
-			this->richTextBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->richTextBox1->Font = (gcnew System::Drawing::Font(L"Courier New", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(0)));
-			this->richTextBox1->Location = System::Drawing::Point(0, 0);
-			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->ScrollBars = System::Windows::Forms::RichTextBoxScrollBars::ForcedVertical;
-			this->richTextBox1->Size = System::Drawing::Size(396, 328);
-			this->richTextBox1->TabIndex = 0;
-			this->richTextBox1->Text = L"";
 			// 
 			// Form1
 			// 
@@ -435,9 +437,12 @@ namespace visualIDE {
 			 }
 	private: System::Void saveToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 }
-private: System::Void exitToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 this->Close();
-		 }
-};
+	private: System::Void exitToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+				 this->Close();
+			 }
+	private: System::Void toolStripButton3_Click(System::Object^  sender, System::EventArgs^  e) {
+				 this->toolStripProgressBar1->Value = 100;
+			 }
+	};
 }
 
