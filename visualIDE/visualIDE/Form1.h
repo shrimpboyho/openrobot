@@ -74,6 +74,7 @@ namespace visualIDE {
 	private: System::Windows::Forms::SplitContainer^  splitContainer1;
 	private: System::Windows::Forms::TabPage^  tabPage1;
 	private: System::Windows::Forms::WebBrowser^  webBrowser1;
+	private: System::Windows::Forms::ToolStripMenuItem^  downloadFirmwareToolStripMenuItem;
 
 
 
@@ -96,7 +97,7 @@ namespace visualIDE {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
-			System::Windows::Forms::TreeNode^  treeNode3 = (gcnew System::Windows::Forms::TreeNode(L"Project"));
+			System::Windows::Forms::TreeNode^  treeNode1 = (gcnew System::Windows::Forms::TreeNode(L"Project"));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->newToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -122,21 +123,22 @@ namespace visualIDE {
 			this->toolStripButton1 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripButton2 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripSplitButton1 = (gcnew System::Windows::Forms::ToolStripSplitButton());
+			this->downloadFirmwareToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripButton3 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
-			this->treeView1 = (gcnew System::Windows::Forms::TreeView());
-			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->webBrowser1 = (gcnew System::Windows::Forms::WebBrowser());
+			this->treeView1 = (gcnew System::Windows::Forms::TreeView());
+			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
 			this->menuStrip1->SuspendLayout();
 			this->statusStrip1->SuspendLayout();
 			this->toolStrip1->SuspendLayout();
 			this->tabControl1->SuspendLayout();
+			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
 			this->splitContainer1->SuspendLayout();
-			this->tabPage1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -154,38 +156,38 @@ namespace visualIDE {
 			this->fileToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {this->newToolStripMenuItem, 
 				this->openToolStripMenuItem, this->saveAsToolStripMenuItem, this->saveAllToolStripMenuItem, this->exitToolStripMenuItem});
 			this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
-			this->fileToolStripMenuItem->Size = System::Drawing::Size(35, 20);
+			this->fileToolStripMenuItem->Size = System::Drawing::Size(37, 20);
 			this->fileToolStripMenuItem->Text = L"File";
 			// 
 			// newToolStripMenuItem
 			// 
 			this->newToolStripMenuItem->Name = L"newToolStripMenuItem";
-			this->newToolStripMenuItem->Size = System::Drawing::Size(135, 22);
+			this->newToolStripMenuItem->Size = System::Drawing::Size(121, 22);
 			this->newToolStripMenuItem->Text = L"New";
 			// 
 			// openToolStripMenuItem
 			// 
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
-			this->openToolStripMenuItem->Size = System::Drawing::Size(135, 22);
+			this->openToolStripMenuItem->Size = System::Drawing::Size(121, 22);
 			this->openToolStripMenuItem->Text = L"Open";
 			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::openToolStripMenuItem_Click);
 			// 
 			// saveAsToolStripMenuItem
 			// 
 			this->saveAsToolStripMenuItem->Name = L"saveAsToolStripMenuItem";
-			this->saveAsToolStripMenuItem->Size = System::Drawing::Size(135, 22);
+			this->saveAsToolStripMenuItem->Size = System::Drawing::Size(121, 22);
 			this->saveAsToolStripMenuItem->Text = L"Save as...";
 			// 
 			// saveAllToolStripMenuItem
 			// 
 			this->saveAllToolStripMenuItem->Name = L"saveAllToolStripMenuItem";
-			this->saveAllToolStripMenuItem->Size = System::Drawing::Size(135, 22);
+			this->saveAllToolStripMenuItem->Size = System::Drawing::Size(121, 22);
 			this->saveAllToolStripMenuItem->Text = L"Save all";
 			// 
 			// exitToolStripMenuItem
 			// 
 			this->exitToolStripMenuItem->Name = L"exitToolStripMenuItem";
-			this->exitToolStripMenuItem->Size = System::Drawing::Size(135, 22);
+			this->exitToolStripMenuItem->Size = System::Drawing::Size(121, 22);
 			this->exitToolStripMenuItem->Text = L"Exit";
 			this->exitToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::exitToolStripMenuItem_Click);
 			// 
@@ -194,37 +196,37 @@ namespace visualIDE {
 			this->editToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {this->copyToolStripMenuItem, 
 				this->cutToolStripMenuItem, this->pasteToolStripMenuItem, this->undoToolStripMenuItem, this->redoToolStripMenuItem});
 			this->editToolStripMenuItem->Name = L"editToolStripMenuItem";
-			this->editToolStripMenuItem->Size = System::Drawing::Size(37, 20);
+			this->editToolStripMenuItem->Size = System::Drawing::Size(39, 20);
 			this->editToolStripMenuItem->Text = L"Edit";
 			// 
 			// copyToolStripMenuItem
 			// 
 			this->copyToolStripMenuItem->Name = L"copyToolStripMenuItem";
-			this->copyToolStripMenuItem->Size = System::Drawing::Size(112, 22);
+			this->copyToolStripMenuItem->Size = System::Drawing::Size(103, 22);
 			this->copyToolStripMenuItem->Text = L"Copy";
 			// 
 			// cutToolStripMenuItem
 			// 
 			this->cutToolStripMenuItem->Name = L"cutToolStripMenuItem";
-			this->cutToolStripMenuItem->Size = System::Drawing::Size(112, 22);
+			this->cutToolStripMenuItem->Size = System::Drawing::Size(103, 22);
 			this->cutToolStripMenuItem->Text = L"Cut";
 			// 
 			// pasteToolStripMenuItem
 			// 
 			this->pasteToolStripMenuItem->Name = L"pasteToolStripMenuItem";
-			this->pasteToolStripMenuItem->Size = System::Drawing::Size(112, 22);
+			this->pasteToolStripMenuItem->Size = System::Drawing::Size(103, 22);
 			this->pasteToolStripMenuItem->Text = L"Paste";
 			// 
 			// undoToolStripMenuItem
 			// 
 			this->undoToolStripMenuItem->Name = L"undoToolStripMenuItem";
-			this->undoToolStripMenuItem->Size = System::Drawing::Size(112, 22);
+			this->undoToolStripMenuItem->Size = System::Drawing::Size(103, 22);
 			this->undoToolStripMenuItem->Text = L"Undo";
 			// 
 			// redoToolStripMenuItem
 			// 
 			this->redoToolStripMenuItem->Name = L"redoToolStripMenuItem";
-			this->redoToolStripMenuItem->Size = System::Drawing::Size(112, 22);
+			this->redoToolStripMenuItem->Size = System::Drawing::Size(103, 22);
 			this->redoToolStripMenuItem->Text = L"Redo";
 			// 
 			// projectToolStripMenuItem
@@ -232,38 +234,38 @@ namespace visualIDE {
 			this->projectToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {this->compileToolStripMenuItem, 
 				this->runToolStripMenuItem, this->linkToolStripMenuItem});
 			this->projectToolStripMenuItem->Name = L"projectToolStripMenuItem";
-			this->projectToolStripMenuItem->Size = System::Drawing::Size(53, 20);
+			this->projectToolStripMenuItem->Size = System::Drawing::Size(56, 20);
 			this->projectToolStripMenuItem->Text = L"Project";
 			// 
 			// compileToolStripMenuItem
 			// 
 			this->compileToolStripMenuItem->Name = L"compileToolStripMenuItem";
-			this->compileToolStripMenuItem->Size = System::Drawing::Size(122, 22);
+			this->compileToolStripMenuItem->Size = System::Drawing::Size(119, 22);
 			this->compileToolStripMenuItem->Text = L"Compile";
 			// 
 			// runToolStripMenuItem
 			// 
 			this->runToolStripMenuItem->Name = L"runToolStripMenuItem";
-			this->runToolStripMenuItem->Size = System::Drawing::Size(122, 22);
+			this->runToolStripMenuItem->Size = System::Drawing::Size(119, 22);
 			this->runToolStripMenuItem->Text = L"Run";
 			// 
 			// linkToolStripMenuItem
 			// 
 			this->linkToolStripMenuItem->Name = L"linkToolStripMenuItem";
-			this->linkToolStripMenuItem->Size = System::Drawing::Size(122, 22);
+			this->linkToolStripMenuItem->Size = System::Drawing::Size(119, 22);
 			this->linkToolStripMenuItem->Text = L"Link";
 			// 
 			// helpToolStripMenuItem
 			// 
 			this->helpToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->docsToolStripMenuItem});
 			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
-			this->helpToolStripMenuItem->Size = System::Drawing::Size(40, 20);
+			this->helpToolStripMenuItem->Size = System::Drawing::Size(44, 20);
 			this->helpToolStripMenuItem->Text = L"Help";
 			// 
 			// docsToolStripMenuItem
 			// 
 			this->docsToolStripMenuItem->Name = L"docsToolStripMenuItem";
-			this->docsToolStripMenuItem->Size = System::Drawing::Size(108, 22);
+			this->docsToolStripMenuItem->Size = System::Drawing::Size(100, 22);
 			this->docsToolStripMenuItem->Text = L"Docs";
 			// 
 			// statusStrip1
@@ -297,7 +299,8 @@ namespace visualIDE {
 			this->toolStripButton1->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->toolStripButton1->Name = L"toolStripButton1";
 			this->toolStripButton1->Size = System::Drawing::Size(23, 22);
-			this->toolStripButton1->Text = L"toolStripButton1";
+			this->toolStripButton1->Text = L"Open";
+			this->toolStripButton1->Click += gcnew System::EventHandler(this, &Form1::toolStripButton1_Click);
 			// 
 			// toolStripButton2
 			// 
@@ -306,16 +309,23 @@ namespace visualIDE {
 			this->toolStripButton2->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->toolStripButton2->Name = L"toolStripButton2";
 			this->toolStripButton2->Size = System::Drawing::Size(23, 22);
-			this->toolStripButton2->Text = L"toolStripButton2";
+			this->toolStripButton2->Text = L"Save";
 			// 
 			// toolStripSplitButton1
 			// 
 			this->toolStripSplitButton1->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			this->toolStripSplitButton1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->downloadFirmwareToolStripMenuItem});
 			this->toolStripSplitButton1->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"toolStripSplitButton1.Image")));
 			this->toolStripSplitButton1->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->toolStripSplitButton1->Name = L"toolStripSplitButton1";
 			this->toolStripSplitButton1->Size = System::Drawing::Size(32, 22);
-			this->toolStripSplitButton1->Text = L"toolStripSplitButton1";
+			this->toolStripSplitButton1->Text = L"NXT";
+			// 
+			// downloadFirmwareToolStripMenuItem
+			// 
+			this->downloadFirmwareToolStripMenuItem->Name = L"downloadFirmwareToolStripMenuItem";
+			this->downloadFirmwareToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->downloadFirmwareToolStripMenuItem->Text = L"Download Firmware";
 			// 
 			// toolStripButton3
 			// 
@@ -324,7 +334,7 @@ namespace visualIDE {
 			this->toolStripButton3->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->toolStripButton3->Name = L"toolStripButton3";
 			this->toolStripButton3->Size = System::Drawing::Size(23, 22);
-			this->toolStripButton3->Text = L"toolStripButton3";
+			this->toolStripButton3->Text = L"Compile";
 			this->toolStripButton3->Click += gcnew System::EventHandler(this, &Form1::toolStripButton3_Click);
 			// 
 			// tabControl1
@@ -338,36 +348,7 @@ namespace visualIDE {
 			this->tabControl1->SelectedIndex = 0;
 			this->tabControl1->Size = System::Drawing::Size(400, 353);
 			this->tabControl1->TabIndex = 0;
-			// 
-			// treeView1
-			// 
-			this->treeView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->treeView1->Location = System::Drawing::Point(3, 2);
-			this->treeView1->Name = L"treeView1";
-			treeNode3->Name = L"Node0";
-			treeNode3->Text = L"Project";
-			this->treeView1->Nodes->AddRange(gcnew cli::array< System::Windows::Forms::TreeNode^  >(1) {treeNode3});
-			this->treeView1->Size = System::Drawing::Size(208, 354);
-			this->treeView1->TabIndex = 6;
-			// 
-			// splitContainer1
-			// 
-			this->splitContainer1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->splitContainer1->Location = System::Drawing::Point(0, 49);
-			this->splitContainer1->Name = L"splitContainer1";
-			// 
-			// splitContainer1.Panel1
-			// 
-			this->splitContainer1->Panel1->Controls->Add(this->treeView1);
-			// 
-			// splitContainer1.Panel2
-			// 
-			this->splitContainer1->Panel2->Controls->Add(this->tabControl1);
-			this->splitContainer1->Size = System::Drawing::Size(610, 356);
-			this->splitContainer1->SplitterDistance = 203;
-			this->splitContainer1->TabIndex = 5;
+			this->tabControl1->TabStop = false;
 			// 
 			// tabPage1
 			// 
@@ -387,7 +368,39 @@ namespace visualIDE {
 			this->webBrowser1->Name = L"webBrowser1";
 			this->webBrowser1->Size = System::Drawing::Size(392, 327);
 			this->webBrowser1->TabIndex = 0;
+			this->webBrowser1->TabStop = false;
 			this->webBrowser1->Url = (gcnew System::Uri(L"http://shrimpboyho.github.com/openrobot", System::UriKind::Absolute));
+			// 
+			// treeView1
+			// 
+			this->treeView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->treeView1->Location = System::Drawing::Point(3, 2);
+			this->treeView1->Name = L"treeView1";
+			treeNode1->Name = L"Node0";
+			treeNode1->Text = L"Project";
+			this->treeView1->Nodes->AddRange(gcnew cli::array< System::Windows::Forms::TreeNode^  >(1) {treeNode1});
+			this->treeView1->Size = System::Drawing::Size(208, 354);
+			this->treeView1->TabIndex = 6;
+			this->treeView1->TabStop = false;
+			// 
+			// splitContainer1
+			// 
+			this->splitContainer1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->splitContainer1->Location = System::Drawing::Point(0, 49);
+			this->splitContainer1->Name = L"splitContainer1";
+			// 
+			// splitContainer1.Panel1
+			// 
+			this->splitContainer1->Panel1->Controls->Add(this->treeView1);
+			// 
+			// splitContainer1.Panel2
+			// 
+			this->splitContainer1->Panel2->Controls->Add(this->tabControl1);
+			this->splitContainer1->Size = System::Drawing::Size(610, 356);
+			this->splitContainer1->SplitterDistance = 203;
+			this->splitContainer1->TabIndex = 5;
 			// 
 			// Form1
 			// 
@@ -409,11 +422,11 @@ namespace visualIDE {
 			this->toolStrip1->ResumeLayout(false);
 			this->toolStrip1->PerformLayout();
 			this->tabControl1->ResumeLayout(false);
+			this->tabPage1->ResumeLayout(false);
 			this->splitContainer1->Panel1->ResumeLayout(false);
 			this->splitContainer1->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->splitContainer1))->EndInit();
 			this->splitContainer1->ResumeLayout(false);
-			this->tabPage1->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -430,6 +443,9 @@ namespace visualIDE {
 				 this->toolStripProgressBar1->Value = 100;
 			 }
 	private: System::Void openToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+				openFile();
+			 }
+	private: System::Void openFile() {
 				 // Displays an OpenFileDialog so the user can select a file.
 				 OpenFileDialog ^openFileDialog1 = gcnew OpenFileDialog();
 				 openFileDialog1->Title = "Select a source code file";
@@ -445,6 +461,7 @@ namespace visualIDE {
 
 					 // Create a new tab for the file contents
 					 TabPage ^tab = gcnew TabPage(System::IO::Path::GetFileName(openFileDialog1->FileName));
+					 tab->TabStop = false;
 					 
 					 // Create a text box, format it, and load it with the file contents
 					 RichTextBox ^code = gcnew RichTextBox;
@@ -460,8 +477,13 @@ namespace visualIDE {
 
 					 // Add the tab to the tab control
 					 tabControl1->TabPages->Add(tab);
+					 tabControl1->SelectTab(tab);
 				 }
 			 }
-	};
+
+	private: System::Void toolStripButton1_Click(System::Object^  sender, System::EventArgs^  e) {
+				 openFile();
+			 }
+};
 }
 
