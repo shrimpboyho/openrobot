@@ -433,6 +433,7 @@ namespace visualIDE {
 
 		}
 #pragma endregion
+
 	private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
 			 }
 	private: System::Void saveToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -455,7 +456,7 @@ namespace visualIDE {
 				 openFileDialog1->Title = "Select a source code file";
 
 				 if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-				 {
+				 {ro
 					 System::IO::StreamReader ^sr = gcnew
 						 System::IO::StreamReader(openFileDialog1->FileName);
 					 
