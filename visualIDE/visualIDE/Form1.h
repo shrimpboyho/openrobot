@@ -97,7 +97,7 @@ namespace visualIDE {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
-			System::Windows::Forms::TreeNode^  treeNode1 = (gcnew System::Windows::Forms::TreeNode(L"Project"));
+			System::Windows::Forms::TreeNode^  treeNode3 = (gcnew System::Windows::Forms::TreeNode(L"Project"));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->newToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -378,9 +378,9 @@ namespace visualIDE {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->treeView1->Location = System::Drawing::Point(3, 2);
 			this->treeView1->Name = L"treeView1";
-			treeNode1->Name = L"Node0";
-			treeNode1->Text = L"Project";
-			this->treeView1->Nodes->AddRange(gcnew cli::array< System::Windows::Forms::TreeNode^  >(1) {treeNode1});
+			treeNode3->Name = L"Node0";
+			treeNode3->Text = L"Project";
+			this->treeView1->Nodes->AddRange(gcnew cli::array< System::Windows::Forms::TreeNode^  >(1) {treeNode3});
 			this->treeView1->Size = System::Drawing::Size(208, 354);
 			this->treeView1->TabIndex = 6;
 			this->treeView1->TabStop = false;
@@ -406,6 +406,7 @@ namespace visualIDE {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->ClientSize = System::Drawing::Size(610, 427);
 			this->Controls->Add(this->splitContainer1);
 			this->Controls->Add(this->toolStrip1);
@@ -445,6 +446,9 @@ namespace visualIDE {
 	private: System::Void openToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 				openFile();
 			 }
+
+	private: System::Void openFile() {
+
 	private: System::Void openFile() {
 				 // Displays an OpenFileDialog so the user can select a file.
 				 OpenFileDialog ^openFileDialog1 = gcnew OpenFileDialog();
