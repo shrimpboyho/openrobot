@@ -430,10 +430,9 @@ namespace visualIDE {
 			this->splitContainer1->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
-		}
+			 
+		}                     
 #pragma endregion
-
 	private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
 			 }
 	private: System::Void saveToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -446,6 +445,10 @@ namespace visualIDE {
 			 }
 	private: System::Void openToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 				openFile();
+			 }
+
+	private: System::Void closeFile() {
+				 
 			 }
 
 	private: System::Void openFile() {
